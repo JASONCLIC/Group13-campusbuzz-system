@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  presentation_service:
+    build: ./presentation_service
+    container_name: presentation_service
+    ports:
+      - "5000:5000"
+    working_dir: /app
+    command: python3 app.py
+    restart: unless-stopped
+
+  workflow_service:
+    build: ./workflow_service
+    container_name: workflow_service
+    ports:
+      - "5001:5001"
+    working_dir: /app
+    command: python3 app.py
+    restart: unless-stopped
+
+  data_service:
+    build: ./data_service
+    container_name: data_service
+    ports:
+      - "5002:5002"
+    working_dir: /app
+    command: python3 app.py
+    restart: unless-stopped
